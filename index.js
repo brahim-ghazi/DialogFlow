@@ -34,12 +34,13 @@ restService.post("/allumer", function(req, res) {
   var temperature =
 	req.body.result &&  req.body.result.parameters && req.body.result.parameters.temperature ? req.body.result.parameters.temperature  : "Seems like some problem. Speak again.";
 	
-  if(intenisty == 150 && temperature == 2000){
+  if(intenisty == 150 && temperature == 2200){
 	  var msgErr = "BlueLignt protection is enable, you cannot apply this command."
 	   return res.json({
 		speech: msgErr,
 		displayText: msgErr,
 		source: "webhook-echo-sample"
+	 });
   }
   
  // return res.json({
