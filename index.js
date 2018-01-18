@@ -42,11 +42,11 @@ restService.post("/allumer", function(req, res) {
 		source: "webhook-echo-sample"
   }
   
-  return res.json({
-    speech: speech,
-    displayText: speech,
-    source: "webhook-echo-sample"
-  });
+ // return res.json({
+  //  speech: speech,
+  //  displayText: speech,
+ //   source: "webhook-echo-sample"
+ // });
 });
 
 
