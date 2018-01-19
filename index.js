@@ -4,6 +4,7 @@
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const  request = require("request");
 
 const restService = express();  
 
@@ -46,13 +47,13 @@ restService.post("/allumer", function(req, res) {
         });
     } 
 	else {
-		var request = require("request");
+	
 
-		var options = { method: 'POST',
-		  url: 'https://35.187.176.76:8243/token',
+		var options = { 
+		  method: 'POST',
+		  url: 'https://gateway.dev.mylifi.fr/token',
 		  headers: 
-		   { 'Postman-Token': 'b5f72a72-eaaf-4ebd-d0e0-ddfce0b8b413',
-			 'Cache-Control': 'no-cache',
+		   { 
 			 Authorization: 'Basic Mk5ieHIyNl9sd20wVVVFcm5aZUJtVDZOZzI0YTpaZ1ZQMEVSRXJfeDVaZFZnX3JOZlNvMm95SHdh',
 			 'Content-Type': 'application/x-www-form-urlencoded' },
 		  form: 
@@ -61,12 +62,17 @@ restService.post("/allumer", function(req, res) {
 			 password: 'Lamp.dev1' } };
 
 		request(options, function (error, response, body) {
-		  if (error) console.log(error)
-		//	console.log(response.access_token)
-		//  console.log(body);
+		  if (error) 
+			console.log('--error--'+error)
+		
+		    //console.log(body)
+
+		    var result = JSON.parse(body);
+		    var token = result.access_token;
+			console.log('--2--'+token)
 				 return res.json({
-					speech: response.access_token,
-					displayText: response.access_token,
+					speech: token,
+					displayText: token,
 					source: "EchoService"
 				});
 		});
