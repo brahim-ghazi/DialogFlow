@@ -62,8 +62,8 @@ restService.post("/allumer", function(req, res) {
 
 		request(options, function (error, response, body) {
 		  if (error) throw new Error(error);
-			
-		  console.log(body);
+			console.log(response.access_token)
+		//  console.log(body);
 				 return res.json({
 					speech: response.access_token,
 					displayText: response.access_token,
