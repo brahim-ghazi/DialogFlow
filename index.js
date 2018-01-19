@@ -39,15 +39,17 @@ restService.post("/allumer", function(req, res) {
 	   return res.json({
 		speech: msgErr,
 		displayText: msgErr,
-		source: "webhook-echo-sample"
+		source: "EchoService"
 	 });
   }
   
- // return res.json({
-  //  speech: speech,
-  //  displayText: speech,
- //   source: "webhook-echo-sample"
- // });
+	  var msg = "The command with temperature "+ temperature +" and intenisty "+ intenisty +" was applied successfully" ;
+	   return res.json({
+		speech: msg,
+		displayText: msg,
+		source: "EchoService"
+	  });
+  
 });
 
 
