@@ -65,16 +65,57 @@ restService.post("/allumer", function(req, res) {
 		  if (error) 
 			console.log('--error--'+error)
 		
-		    //console.log(body)
-
 		    var result = JSON.parse(body);
 		    var token = result.access_token;
-			console.log('--2--'+token)
+			
+			if( token == null){
 				 return res.json({
-					speech: token,
-					displayText: token,
+					speech: "Error while trying to connect, please try again",
+					displayText: "Error while trying to connect, please try again",
 					source: "EchoService"
 				});
+			}
+			else{
+				
+				var access_Token = 'Bearer '+token;
+				console.log('------------access_Token:'+access_Token);
+				var optionsWS = { method: 'POST',
+				  url: 'https://gateway.dev.mylifi.fr/MCSMylifi/1.0/m3/front/rest/applyTemperatureIntensity',
+				  headers: 
+				   { 
+					 Authorization: access_Token,
+					 'Content-Type': 'application/json' },
+				  body: 
+				   { intensity: intenisty,
+					 temperature: temperature,
+					 lampUid: 'f5e1dc20-d67f-11e7-a351-f10eafa297d2' },
+				  json: true };
+
+				request(optionsWS, function (error, response, body) {
+				  if (error)  console.log('--errorWS--'+error)
+					  console.log('------------body:'+body.error);
+					
+					  if(body.error ==  null){
+						   
+						  var msg = "The command with temperature "+ temperature +" and intenisty "+ intenisty +" was applied successfully" ;
+						  return res.json({
+							speech: msg,
+							displayText: msg,
+							source: "EchoService"
+						  });
+					  }
+					  else{
+						return res.json({
+								speech: "Error while trying to execute command, please check the lamp",
+								displayText: "Error while trying to execute command, please check the lamp",
+								source: "EchoService"
+							});  
+					  }
+					
+				});
+
+				
+			}
 		});
 	
 	}
