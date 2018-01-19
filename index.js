@@ -28,54 +28,26 @@ restService.post("/echo", function(req, res) {
 });
 
 restService.post("/allumer", function(req, res) {
+  var intenisty =
+    req.body.result &&  req.body.result.parameters && req.body.result.parameters.intenisty ? req.body.result.parameters.intenisty  : "Seems like some problem. Speak again.";
 	
-	if(req.body.lang == "en" || req.body.lang =="en-US"){
-	  var intenisty =
-		req.body.result &&  req.body.result.parameters && req.body.result.parameters.intenisty ? req.body.result.parameters.intenisty  : "Seems like some problem. Speak again.";
-		
-	  var temperature =
-		req.body.result &&  req.body.result.parameters && req.body.result.parameters.temperature ? req.body.result.parameters.temperature  : "Seems like some problem. Speak again.";
-		
-	  if(intenisty == 150 && temperature == 2200){
-		  var msgErr = "BlueLight protection is enabled, you cannot apply this command."
-		   return res.json({
-			speech: msgErr,
-			displayText: msgErr,
-			source: "EchoService"
-		 });
-	  }
-	  
-	  var msg = "The command with temperature "+ temperature +" and intenisty "+ intenisty +" was applied successfully" ;
-	  return res.json({
-		speech: msg,
-		displayText: msg,
-		source: "EchoService"
-	  });
-	}  
+  var temperature =
+	req.body.result &&  req.body.result.parameters && req.body.result.parameters.temperature ? req.body.result.parameters.temperature  : "Seems like some problem. Speak again.";
 	
-	if(req.body.lang == "fr" || req.body.lang == "fr-fr"){
-	  var intenisty =
-		req.body.result &&  req.body.result.parameters && req.body.result.parameters.intenisty ? req.body.result.parameters.intenisty  : "On dirait un problème. Répéter SVP.";
-		
-	  var temperature =
-		req.body.result &&  req.body.result.parameters && req.body.result.parameters.temperature ? req.body.result.parameters.temperature  : "On dirait un problème. Répéter SVP.";
-		
-	  if(intenisty == 150 && temperature == 2200){
-		  var msgErr = "BlueLight est activer, vous pouvez pas exécuter cette commande."
-		   return res.json({
-			speech: msgErr,
-			displayText: msgErr,
-			source: "EchoService"
-		 });
-	  }
-	  
-	  var msg = "La commande avec la température "+ temperature +" et l'intensité "+ intenisty +" a été appliquée avec succès" ;
-	  return res.json({
-		speech: msg,
-		displayText: msg,
-		source: "EchoService"
-	  });
-	}  
+  if(intenisty == 150 && temperature == 2200){
+	  var msgErr = "BlueLignt protection is enable, you cannot apply this command."
+	   return res.json({
+		speech: msgErr,
+		displayText: msgErr,
+		source: "webhook-echo-sample"
+	 });
+  }
+  
+ // return res.json({
+  //  speech: speech,
+  //  displayText: speech,
+ //   source: "webhook-echo-sample"
+ // });
 });
 
 
