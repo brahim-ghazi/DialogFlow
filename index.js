@@ -29,45 +29,6 @@ restService.post("/echo", function(req, res) {
 
 restService.post("/allumer", function(req, res) {
 
-    var isLogged = false;
-
-    var email = req.body.result.parameters.email;
-	var email =
-            req.body.result && req.body.result.parameters && req.body.result.parameters.email ? req.body.result.parameters.email : "required.Please enter your Email.";
-	if(email != null){
-		 email ="UserName "+email;
-	}
-			return res.json({
-                speech: email,
-                displayText: email,
-                source: "EchoService"
-            });
-/*	else{
-		
-		var password = req.body.result.parameters.email;
-		if(password == null){
-			var passwordRequired ="Password is required.Please enter your password"
-			return res.json({
-					speech: passwordRequired,
-					displayText: passwordRequired,
-					source: "EchoService"
-				});
-		}
-		else{
-			
-			var loginSuccess ="your username is "+email " and your password is : "+password;
-			return res.json({
-					speech: loginSuccess,
-					displayText: loginSuccess,
-					source: "EchoService"
-				});
-			
-		}
-	}*/
-    
-
-
-    if (isLogged) {
         var intenisty =
             req.body.result && req.body.result.parameters && req.body.result.parameters.intenisty ? req.body.result.parameters.intenisty : "Seems like some problem. Speak again.";
 
@@ -89,15 +50,7 @@ restService.post("/allumer", function(req, res) {
             displayText: msg,
             source: "EchoService"
         });
-    }
-//	esle{
-//		 var loginPlease = "Please login first, enter your username";
-//		 return res.json({
-//            speech: loginPlease,
-//            displayText: loginPlease,
-//            source: "EchoService"
-//        });
-//	}
+    
 });
 
 
