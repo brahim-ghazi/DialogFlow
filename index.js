@@ -32,15 +32,17 @@ restService.post("/allumer", function(req, res) {
     var isLogged = false;
 
     var email = req.body.result.parameters.email;
-	if(email == null){
-		var emailRequired ="Email is required.Please enter your Email"
-		return res.json({
-                speech: emailRequired,
-                displayText: emailRequired,
+	var email =
+            req.body.result && req.body.result.parameters && req.body.result.parameters.email ? req.body.result.parameters.email : "Email is required.Please enter your Email.";
+	if(email != null){
+		 email ="Your username is :"+email;
+	}
+			return res.json({
+                speech: email,
+                displayText: email,
                 source: "EchoService"
             });
-	}
-	else{
+/*	else{
 		
 		var password = req.body.result.parameters.email;
 		if(password == null){
@@ -61,7 +63,7 @@ restService.post("/allumer", function(req, res) {
 				});
 			
 		}
-	}
+	}*/
     
 
 
