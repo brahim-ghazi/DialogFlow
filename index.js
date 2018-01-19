@@ -29,7 +29,7 @@ restService.post("/echo", function(req, res) {
 
 restService.post("/allumer", function(req, res) {
 	
-	if(req.body.lang == "en"){
+	if(req.body.lang == "en" || req.body.lang =="en-US"){
 	  var intenisty =
 		req.body.result &&  req.body.result.parameters && req.body.result.parameters.intenisty ? req.body.result.parameters.intenisty  : "Seems like some problem. Speak again.";
 		
