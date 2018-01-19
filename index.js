@@ -61,7 +61,7 @@ restService.post("/allumer", function(req, res) {
 			 password: 'Lamp.dev1' } };
 
 		request(options, function (error, response, body) {
-		  if (error) throw new Error(error);
+		  if (error) console.log(error)
 		//	console.log(response.access_token)
 		//  console.log(body);
 				 return res.json({
