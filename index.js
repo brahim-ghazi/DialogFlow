@@ -33,9 +33,9 @@ restService.post("/allumer", function(req, res) {
 
     var email = req.body.result.parameters.email;
 	var email =
-            req.body.result && req.body.result.parameters && req.body.result.parameters.email ? req.body.result.parameters.email : "Email is required.Please enter your Email.";
+            req.body.result && req.body.result.parameters && req.body.result.parameters.email ? req.body.result.parameters.email : "required.Please enter your Email.";
 	if(email != null){
-		 email ="Your username is :"+email;
+		 email ="UserName "+email;
 	}
 			return res.json({
                 speech: email,
