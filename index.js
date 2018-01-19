@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -42,6 +44,48 @@ restService.post("/allumer", function(req, res) {
                 displayText: msgErr,
                 source: "EchoService"
             });
+        }
+        else{
+          var qs = require("querystring");
+var http = require("https");
+
+var options = {
+  "method": "POST",
+  "hostname": [
+    "35",
+    "187",
+    "176",
+    "76"
+  ],
+  "port": "8243",
+  "path": [
+    "token"
+  ],
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Authorization": "Basic Mk5ieHIyNl9sd20wVVVFcm5aZUJtVDZOZzI0YTpaZ1ZQMEVSRXJfeDVaZFZnX3JOZlNvMm95SHdh",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "6e6c1852-e794-d554-b277-764ba64b70b0"
+  }
+};
+
+var req = http.request(options, function (res) {
+  var chunks = [];
+
+  res.on("data", function (chunk) {
+    chunks.push(chunk);
+  });
+
+  res.on("end", function () {
+    var body = Buffer.concat(chunks);
+    console.log(body.toString());
+  });
+});
+
+req.write(qs.stringify({ grant_type: 'password',
+  username: 'MYLIFI/lamp.dev@yopmail.com',
+  password: 'Lamp.dev1' }));
+req.end();
         }
 
         var msg = "The command with temperature " + temperature + " and intenisty " + intenisty + " was applied successfully";
