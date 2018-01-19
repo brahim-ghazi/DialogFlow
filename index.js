@@ -53,7 +53,7 @@ restService.post("/allumer", function(req, res) {
 	  });
 	}  
 	
-	if(req.body.lang == "fr" || req.body.lang == "fr-fr"){
+	if(req.body.lang == "fr"){
 	  var intenisty =
 		req.body.result &&  req.body.result.parameters && req.body.result.parameters.intenisty ? req.body.result.parameters.intenisty  : "On dirait un problème. Répéter SVP.";
 		
