@@ -53,7 +53,7 @@ restService.post("/allumer", function(req, res) {
 	  });
 	}  
 	
-	if(req.body.lang == "fr"){
+	if(req.body.lang == "fr" || req.body.lang == "fr-fr"){
 	  var intenisty =
 		req.body.result &&  req.body.result.parameters && req.body.result.parameters.intenisty ? req.body.result.parameters.intenisty  : "On dirait un problème. Répéter SVP.";
 		
@@ -69,7 +69,7 @@ restService.post("/allumer", function(req, res) {
 		 });
 	  }
 	  
-	  var msg = "La commande avec la température "+ température +" et l'intensité "+ intensité +" a été appliquée avec succès" ;
+	  var msg = "La commande avec la température "+ temperature +" et l'intensité "+ intenisty +" a été appliquée avec succès" ;
 	  return res.json({
 		speech: msg,
 		displayText: msg,
