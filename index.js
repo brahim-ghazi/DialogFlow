@@ -51,15 +51,15 @@ restService.post("/allumer", function(req, res) {
 
 		var options = { 
 		  method: 'POST',
-		  url: 'https://gateway.dev.mylifi.fr/token',
+		  url: 'https://gateway.demo.mylifi.fr/token',
 		  headers: 
 		   { 
-			 Authorization: 'Basic Mk5ieHIyNl9sd20wVVVFcm5aZUJtVDZOZzI0YTpaZ1ZQMEVSRXJfeDVaZFZnX3JOZlNvMm95SHdh',
+			 Authorization: 'Basic SG5peGYxWWFqcXhFUHRwdzNmR19EbUpwa0lBYTo0VmtmUkZFdmFqcHFDNDNZSHYza0p0dXpacllh',
 			 'Content-Type': 'application/x-www-form-urlencoded' },
 		  form: 
 		   { grant_type: 'password',
-			 username: 'MYLIFI/lamp.dev@yopmail.com',
-			 password: 'Lamp.dev1' } };
+			 username: 'MYLIFI/arkeup.support@yopmail.com',
+			 password: 'ArkeupSupport1' } };
 
 		request(options, function (error, response, body) {
 		  if (error) 
@@ -80,7 +80,7 @@ restService.post("/allumer", function(req, res) {
 				var access_Token = 'Bearer '+token;
 				console.log('------------access_Token:'+access_Token);
 				var optionsWS = { method: 'POST',
-				  url: 'https://gateway.dev.mylifi.fr/MCSMylifi/1.0/m3/front/rest/applyTemperatureIntensity',
+				  url: 'https://gateway.demo.mylifi.fr/MCSMylifi/1.0/m3/front/rest/applyTemperatureIntensity',
 				  headers: 
 				   { 
 					 Authorization: access_Token,
@@ -88,7 +88,7 @@ restService.post("/allumer", function(req, res) {
 				  body: 
 				   { intensity: intenisty,
 					 temperature: temperature,
-					 lampUid: 'f5e1dc20-d67f-11e7-a351-f10eafa297d2' },
+					 lampUid: '0a59dc30-f231-11e7-b53f-07b86b78652b' },
 				  json: true };
 
 				request(optionsWS, function (error, response, body) {
