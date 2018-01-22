@@ -95,9 +95,9 @@ restService.post("/allumer", function(req, res) {
 				  if (error)  console.log('--errorWS--'+error)
 					  console.log('------------body:'+body.error);
 					
-					  if(body.error ==  null){
+					  if(body.error ==  null){  
 						   
-						  var msg = "The command with temperature "+ temperature +" and intenisty "+ intenisty +" was applied successfully" ;
+						  var msg = "The command with temperature "+ temperature +" and intensity "+ intenisty +" was applied successfully" ;
 						  return res.json({
 							speech: msg,
 							displayText: msg,
